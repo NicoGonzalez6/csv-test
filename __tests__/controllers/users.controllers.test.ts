@@ -12,7 +12,7 @@ describe('Users controller test case', () => {
 
   it('should upload the file successfully', async () => {
     const response = await request(app).get('/api/users');
-    expect(response.status).toBe(500);
+    expect(response.status).toBe(200);
     expect(response.body.users.length).toBeGreaterThan(0);
   });
 

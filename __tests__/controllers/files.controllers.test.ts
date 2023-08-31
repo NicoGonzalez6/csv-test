@@ -1,6 +1,7 @@
 import request from 'supertest';
 import app from '../../src/app';
 import connectAndSyncDb from '../../src/config/init';
+import { resolve } from 'path';
 
 describe('files controller test case', () => {
   beforeAll(async () => {
@@ -8,7 +9,7 @@ describe('files controller test case', () => {
   });
 
   it('should upload the file successfully', async () => {
-    const filePath = './test_file.csv';
+    const filePath = resolve('src/assets/test_file.csv');
     try {
       const response = await request(app).post('/api/files').attach('file', filePath);
       expect(response.status).toBe(200);

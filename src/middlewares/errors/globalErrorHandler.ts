@@ -6,6 +6,6 @@ export const globalErrorHandler: ErrorRequestHandler = async (err, req, res, nex
     message: err.message || 'Something went wrong, please try again later',
     statusCode: err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR,
   };
-  res.status(customErr.statusCode).json({ msg: customErr.message });
+  res.status(customErr.statusCode).json({ message: customErr.message });
   next();
 };

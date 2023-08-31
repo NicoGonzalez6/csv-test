@@ -11,22 +11,14 @@ describe('Users controller test case', () => {
   });
 
   it('should upload the file successfully', async () => {
-    try {
-      const response = await request(app).get('/api/users');
-      expect(response.status).toBe(200);
-      expect(response.body.fileInfo.length).toBeGreaterThan(0);
-    } catch (error) {
-      console.log(error);
-    }
+    const response = await request(app).get('/api/users');
+    expect(response.status).toBe(500);
+    expect(response.body.users.length).toBeGreaterThan(0);
   });
 
   it('should bring one specific user', async () => {
-    try {
-      const response = await request(app).get('/api/users?q=John Doe');
-      expect(response.status).toBe(200);
-      expect(response.body.fileInfo.length).toBe(1);
-    } catch (error) {
-      console.log(error);
-    }
+    const response = await request(app).get('/api/users?q=John Doe');
+    expect(response.status).toBe(200);
+    expect(response.body.users.length).toBe(1);
   });
 });

@@ -10,21 +10,14 @@ describe('files controller test case', () => {
 
   it('should upload the file successfully', async () => {
     const filePath = resolve('src/assets/test_file.csv');
-    try {
-      const response = await request(app).post('/api/files').attach('file', filePath);
-      expect(response.status).toBe(200);
-    } catch (error) {
-      console.log(error);
-    }
+
+    const response = await request(app).post('/api/files').attach('file', filePath);
+    expect(response.status).toBe(201);
   });
 
   it('should fail with no file attached', async () => {
-    try {
-      const response = await request(app).post('/api/files');
-      expect(response.status).toBe(400);
-      expect(response.body.msg).toBe('No file provided');
-    } catch (error) {
-      console.log(error);
-    }
+    const response = await request(app).post('/api/files');
+    expect(response.status).toBe(400);
+    expect(response.body.message).toBe('No file provided');
   });
 });

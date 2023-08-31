@@ -2,7 +2,7 @@ import sequelize from '../config/db';
 
 import { DataTypes } from 'sequelize';
 
-const Files = sequelize.define('files', {
+const Users = sequelize.define('users', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -26,4 +26,4 @@ const Files = sequelize.define('files', {
   },
 });
 
-export default Files;
+export default Users;

@@ -1,7 +1,7 @@
 import { IFile } from '../globals/types/files.type';
 import { parse } from 'csv-parse';
 import { Readable } from 'stream';
-import FileModel from '../models/files';
+import UsersModel from '../models/users';
 
 export const uploadFile = async (file: IFile) => {
   const readable = new Readable();
@@ -17,7 +17,7 @@ export const uploadFile = async (file: IFile) => {
     )
     .on('data', async (parsedData: string[]) => {
       const [name, city, country, favorite_sport] = parsedData;
-      await FileModel.create({
+      await UsersModel.create({
         name,
         city,
         country,
@@ -25,7 +25,7 @@ export const uploadFile = async (file: IFile) => {
       });
     });
 
-  const fileData = await FileModel.findAll({});
+  const fileData = await UsersModel.findAll({});
 
   const finalData = fileData.map((data) => data.dataValues);
 

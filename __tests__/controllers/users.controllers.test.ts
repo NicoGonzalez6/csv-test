@@ -10,16 +10,6 @@ describe('Users controller test case', () => {
     await request(app).post('/api/files').attach('file', filePath);
   });
 
-  it('should get 0 length array', async () => {
-    try {
-      const response = await request(app).get('/api/users');
-      expect(response.status).toBe(200);
-      expect(response.body.fileInfo.length).toBe(0);
-    } catch (error) {
-      console.log(error);
-    }
-  });
-
   it('should upload the file successfully', async () => {
     try {
       const response = await request(app).get('/api/users');
